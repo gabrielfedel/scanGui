@@ -1,0 +1,61 @@
+counters:
+  monitor:
+    type: scaler
+    channel: 2
+    pv: XRF:SCALER
+    description: XRF scaler channel 2
+  cion01:
+    type: scaler
+    channel: 11
+    pv: XRF:SCALER
+    description: XRF scaler channel 11
+  cion02:
+    type: scaler
+    channel: 12
+    pv: XRF:SCALER
+    description: XRF scaler channel 12
+  ringcurrent:
+    type: pv
+    pv: LNLS:ANEL:corrente
+    description: LNLS ring current
+    round: 1
+  mca1:
+    type: dxpfake
+    pv: dxpXMAP
+    channel: mca1
+    description: XRF dxp detector channel 1 spectrum
+    plot: false
+    normalize: false
+    spectra: true
+  mca1-norm:
+    type: dxpfake
+    pv: dxpXMAP
+    channel: mca1
+    description: XRF dxp detector channel 1 spectrum normalized
+    plot: true
+    normalize: 1/(counter['monitor']*const['Factor'])
+motors:
+  sh2y:
+    type: real
+    pv: XRF:DMC2:m1
+    readback: XRF:DMC2:m1.RBV
+    description: Galil 2 motor 1
+  sh2x:
+    type: real
+    pv: SOL3:DMC1:m1
+    readback: SOL3:DMC1:m1.RBV
+    description: Galil 2 motor 2
+  sh2z:
+    type: real
+    pv: SOL3:DMC1:m2
+    readback: SOL3:DMC1:m2.RBV
+    description: Galil 2 motor 7
+  sh2yaw:
+    type: real
+    pv: XRF:DMC2:m4
+    readback: XRF:DMC2:m4.RBV
+    description: Galil 2 motor 4
+misc:
+  output-prefix:   
+  default-scan: absolute
+  step-or-count: step
